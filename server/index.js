@@ -45,3 +45,31 @@ app.get("/api", (req, res) => {
       }
     );
   });
+
+  app.get("/showTeams", (req, res) => {
+    db.query("SELECT * FROM TEAMS", (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    });
+  });
+
+  app.put("/updateTEAM", (req, res) => {
+    const id = req.body.id;
+    const posicion = req.body.posicion;
+    const afavor = req.body.afavor;
+    const encontra = req.body.encontra;
+    db.query(
+      "UPDATE employees SET POSICION = ?, AFAVOR = ?, ENCONTRA = ? WHERE id = ?",
+      [posicion,afavor,encontra, id],
+      (err, result) => {
+        if (err) {
+          console.log(err);
+        } else {
+          res.send(result);
+        }
+      }
+    );
+  });
