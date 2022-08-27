@@ -60,6 +60,8 @@ function App() {
     });
   };
 
+  
+
   const updateGolesyPosicion = (id) => {
     Axios.put("http://localhost:3001/updateTeam", { afavor: newafavor,encontra:newencontra,posicion:newposicion, id: id }).then(
       (response) => {
@@ -93,22 +95,36 @@ function App() {
       </div>
       <div className="TEAMS">
         <button onClick={getTEAMS}>Show Teams</button>
-
+      </div>
+    <table className="table table-dark">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Posición</th>
+          <th scope="col">´Goles a favor</th>
+          <th scope="col">Goles en contra</th>
+        </tr>
+      </thead>
+      <tbody>
         {teamsList.map((val, key) => {
           return (
-            <div className="TEAM">
-              <div>
-                <dt>ID: {val.idTEAM}</dt>
-                <dt>Name: {val.nameTEAM}</dt>
-                <dt>Posición: {val.POSICION}</dt>
-                <dt>Goles a favor: {val.AFAVOR}</dt>
-                <dt>Goles en Contra: {val.ENCONTRA}</dt>
-              </div>
-            </div>
+            <tr>
+              <td>{val.idTEAM}</td>
+              <td>{val.nameTEAM}</td>
+              <td>{val.POSICION}</td>
+              <td>{val.AFAVOR}</td>
+              <td>{val.ENCONTRA}</td>
+            </tr>
           );
         })}
-      </div>
+      </tbody>
+    </table>
     </div>
+
+    
+
+
   );  
   
   
