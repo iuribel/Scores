@@ -1,0 +1,29 @@
+lenguaje de programación orientado a servicios 
+enviar el link del repositorio en 24 horas max
+al correo que ellos indican
+
+
+CREATE DATABASE scores;
+USE scores;
+
+CREATE TABLE TEAMS (
+    idTEAM int NOT NULL AUTO_INCREMENT,
+    nameTEAM varchar(30) NOT NULL,
+    POSICION int ,
+    AFAVOR int NOT NULL,
+    ENCONTRA int NOT NULL,
+    UNIQUE INDEX ID_TEAM (idTEAM),
+    CONSTRAINT TEAM_pk PRIMARY KEY (idTEAM)
+);
+
+CREATE TABLE MATCHES (
+    idMATCH int NOT NULL AUTO_INCREMENT,
+    TEAM1 int NOT NULL,
+    SCORE1 int NOT NULL ,
+    TEAM2 int NOT NULL,
+    SCORE2 int NOT NULL,
+    UNIQUE INDEX ID_MATCH (idMATCH),
+    CONSTRAINT MATCH_pk PRIMARY KEY (idMATCH),
+    CONSTRAINT FK_team1 FOREIGN KEY (TEAM1) REFERENCES TEAMS(idTEAM),
+    CONSTRAINT FK_team2 FOREIGN KEY (TEAM2) REFERENCES TEAMS(idTEAM)
+);
