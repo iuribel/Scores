@@ -56,6 +56,17 @@ app.get("/api", (req, res) => {
     });
   });
 
+  app.delete("/deleteTeam/:id", (req, res) => {
+    const id = req.params.id;
+    db.query("DELETE FROM TEAMS WHERE id = ?", id, (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    });
+  });
+
   app.put("/updateTEAM", (req, res) => {
     const id = req.body.id;
     const posicion = req.body.posicion;

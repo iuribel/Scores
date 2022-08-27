@@ -60,6 +60,10 @@ function App() {
     });
   };
 
+  const deleteTEAM = (id) => {
+    Axios.delete(`http://localhost:3001/deleteTeam/${id}`)
+  };
+
   
 
   const updateGolesyPosicion = (id) => {
@@ -92,6 +96,7 @@ function App() {
           }}
         />
         <button onClick={addTEAM}>Add Team</button>
+        
       </div>
       <div className="TEAMS">
         <button onClick={getTEAMS}>Show Teams</button>
@@ -104,6 +109,7 @@ function App() {
           <th scope="col">Posición</th>
           <th scope="col">´Goles a favor</th>
           <th scope="col">Goles en contra</th>
+          
         </tr>
       </thead>
       <tbody>
